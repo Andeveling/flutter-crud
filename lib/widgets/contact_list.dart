@@ -1,4 +1,4 @@
-/* import 'package:crud_test/services/contact_service.dart';
+import 'package:crud_test/services/contact_service.dart';
 import 'package:flutter/material.dart';
 import '../firebase_service.dart';
 import 'package:crud_test/models/contact_model.dart';
@@ -16,10 +16,10 @@ class _ContactListWidgetState extends State<ContactListWidget> {
   void initState() {
     super.initState();
     _contacts = [];
-    _loadUsers();
+    _loadContacts();
   }
 
-  Future<void> _loadUsers() async {
+  Future<void> _loadContacts() async {
     List<ContactModel> contacts = await getContacts();
     setState(() {
       _contacts = contacts;
@@ -58,4 +58,3 @@ class _ContactListWidgetState extends State<ContactListWidget> {
     );
   }
 }
- */

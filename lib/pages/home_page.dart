@@ -1,3 +1,4 @@
+import 'package:crud_test/widgets/contact_list.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +33,7 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[_userUid(), _signOutButton()],
+          children: <Widget>[ContactListWidget(), _userUid(), _signOutButton()],
         ),
       ),
       floatingActionButton: FloatingActionButton(

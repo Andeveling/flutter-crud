@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:crud_test/services/contact_service.dart';
+
 import '../services/upload_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -91,8 +93,7 @@ class _NewContactPageState extends State<NewContactPage> {
             ),
             /*     ElevatedButton(
                 onPressed: () {
-                  createContact(nameController.text, emailController.text,
-                          cellphoneController.text, _image)
+                  createContact( _image)
                       .then((value) => Navigator.pop(context));
                 },
                 child: const Text('New Contact')), */
@@ -101,11 +102,17 @@ class _NewContactPageState extends State<NewContactPage> {
                   if (_image == null) {
                     return;
                   } else {
-                    print(_image);
-                    uploadImage(_image!);
+                    await uploadImage(_image!)
+                        .then((url) => createContact(
+                                nameController.text,
+                                emailController.text,
+                                cellphoneController.text,
+                                url)
+                            .then((value) => Navigator.pop(context)))
+                        .catchError((onError) => print(onError));
                   }
                 },
-                child: const Text('upload image'))
+                child: const Text('Create Contact'))
           ],
         ),
       ),

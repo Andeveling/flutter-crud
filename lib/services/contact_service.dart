@@ -27,14 +27,13 @@ Future<String> uploadImages(File image) async {
 
 // Create Contact
 Future<void> createContact(name, email, cellphone, image) async {
-  String imageUrl = await uploadImages(image);
   try {
     await contactsRef.add({
       'userId': Auth().currentUser!.uid,
       'name': name,
       'email': email,
       'cellphone': cellphone,
-      'imageUrl': imageUrl,
+      'imageUrl': image,
     });
   } catch (e) {
     if (kDebugMode) {
@@ -44,7 +43,7 @@ Future<void> createContact(name, email, cellphone, image) async {
 }
 
 // Read
-Future<List<DocumentSnapshot<Object?>>> getContacts() async {
+Future getContacts() async {
   QuerySnapshot querySnapshot = await contactsRef
       .where('userId', isEqualTo: Auth().currentUser!.uid)
       .get();
