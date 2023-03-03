@@ -2,7 +2,7 @@
 import './pages/home_page.dart';
 import './pages/login_register_page.dart';
 import './pages/new_contact.dart';
-import './pages/update_user.dart';
+import './pages/update_contact.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 // Firebase
 import 'package:firebase_core/firebase_core.dart';
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         '/add': (context) =>
             _buildProtectedRoute(context, const NewContactPage()),
         '/update': (context) =>
-            _buildProtectedRoute(context, const UpdateUserPage()),
+            _buildProtectedRoute(context, const UpdateContactPage()),
       },
     );
   }
