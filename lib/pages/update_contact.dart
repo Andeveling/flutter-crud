@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:crud_test/services/contact_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -98,7 +100,21 @@ class _UpdateContactPageState extends State<UpdateContactPage> {
                       children: [
                         ElevatedButton(
                             style: style,
-                            onPressed: () async {},
+                            onPressed: () async {
+                              if (nameController.text != null &&
+                                  emailController.text != null &&
+                                  cellphoneController.text != null) {
+                                await updateContact(
+                                  id,
+                                  nameController.text,
+                                  emailController.text,
+                                  cellphoneController.text,
+                                );
+                                Navigator.pop(context);
+                              } else {
+                                // Mostrar un mensaje de error
+                              }
+                            },
                             child: Row(
                               children: const [
                                 Icon(Icons.upload), // El icono a mostrar

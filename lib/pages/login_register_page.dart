@@ -14,7 +14,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   String errorMessage = '';
   bool isLogin = true;
-  bool isEmailCorrect = false;
+  bool isEmailCorrect = true;
   final TextEditingController _controllerEmail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
 
@@ -66,8 +66,7 @@ class _LoginPageState extends State<LoginPage> {
         style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0)),
-            backgroundColor:
-                isEmailCorrect == false ? Colors.red : Colors.purple,
+            backgroundColor: isEmailCorrect == false ? Colors.red : Colors.blue,
             padding: const EdgeInsets.symmetric(horizontal: 131, vertical: 20)),
         onPressed: isLogin
             ? signInWithEmailAndPassword

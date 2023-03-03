@@ -44,8 +44,13 @@ Future<List> getAllContacts() async {
 }
 
 //Update Contact
-Future<void> updateContact(String uid, dynamic update) async {
-  await contactsRef.doc(uid).set(update);
+Future<void> updateContact(
+    String id, String name, String email, String cellphone) async {
+  await FirebaseFirestore.instance.collection('contacts').doc(id).update({
+    'name': name,
+    'email': email,
+    'cellphone': cellphone,
+  });
 }
 
 // Delete
